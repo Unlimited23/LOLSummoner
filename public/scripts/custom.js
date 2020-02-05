@@ -10,6 +10,7 @@ var staticVersion = '10.3.1'; // Change to the current one;
 
 $(document).ready(function() {
     var api = new API();
+
     $('#loader').hide();
     $('#search-recent-match').hide();
     $('#search-matches').hide();
@@ -17,12 +18,15 @@ $(document).ready(function() {
 
     $('#findUser').on('click', function() {
         $('#loader').show();
+
         api.getUserByUsername();
+
         $.when(userAjax).done(function() {
-			$('#summoner-matches > #grid').empty();
+            $('#summoner-matches > #grid').empty();
             $('#search-recent-match').show();
             $('#search-matches').show();
             $('#user-info').show();
+
             api.getUserProfilePicture();
             api.getChampions();
         });    
@@ -30,10 +34,12 @@ $(document).ready(function() {
 
     $('#findMatch').on('click', function() {
         $('#loader').show();
-        if (recentMatchField != $('#search-recent-match').val()) {
+        if (recentMatchField != $('#search-recent-match').val()
+        ) {
             recentMatchField = $('#search-recent-match').val();
             counter += 1;
             api.getRecentMatchById(recentMatchField - 1);
+
             $.when(recentAjax).done(function() {
                 api.drawGridMatches(recentMatchField);
             });
@@ -104,8 +110,8 @@ function API() {
                 $('#lp-solo').text(resp[0].leaguePoints + 'LP / ' + resp[0].wins + 'W ' + resp[0].losses + 'L');
                 //$('#lp-flex').text(resp[1].leaguePoints + 'LP / ' + resp[1].wins + 'W ' + resp[1].losses + 'L');
             } else if (resp.length > 0) { //summoner has not played ranked games
-				$('#summoner-positions').show();
-			} else {
+                $('#summoner-positions').show();
+            } else {
                 $('#summoner-positions').hide();
                 $('#search-matches').hide();
             }
@@ -115,23 +121,23 @@ function API() {
     this.getUserProfilePicture = function() {
         var iconUrl = 'http://ddragon.leagueoflegends.com/cdn/{0}/img/profileicon/{1}.png';
 
-		iconUrl = self.format(iconUrl, [staticVersion, self.user.profileIconId]);
-		$('#profilePic').attr({'src' : iconUrl});
+        iconUrl = self.format(iconUrl, [staticVersion, self.user.profileIconId]);
+        $('#profilePic').attr({'src' : iconUrl});
     }
 
     this.getChampions = function() {
-		var url = 'http://ddragon.leagueoflegends.com/cdn/{0}/data/en_US/champion.json';
+        var url = 'http://ddragon.leagueoflegends.com/cdn/{0}/data/en_US/champion.json';
 
-		var url = self.format(url, [staticVersion]);
-		
+        var url = self.format(url, [staticVersion]);
+
         $.get(url, {}, function(resp) {
-			var listChampions = [];
+            var listChampions = [];
 
-			for (var champ in resp.data) {
-				if (resp.data.hasOwnProperty(champ)) {
-					listChampions.push(resp.data[champ]);
-				}
-			}
+            for (var champ in resp.data) {
+                if (resp.data.hasOwnProperty(champ)) {
+                    listChampions.push(resp.data[champ]);
+                }
+            }
 
             self.champions = listChampions;
             $('#loader').hide();
@@ -139,11 +145,11 @@ function API() {
     }
 
     this.getChampionNameById = function(id) {
-		if (self.champions.hasOwnProperty(id)) {
-			return self.champions[id].name;
-		}
+        if (self.champions.hasOwnProperty(id)) {
+            return self.champions[id].name;
+        }
 
-		return '';
+        return '';
     }
 
     this.getChampionPicture = function(name) {
