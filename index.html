@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- STYLES -->
+        <link href="public/styles/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="public/styles/custom.css">
+        <!-- END STYLES -->
+    </head>
+    <body>
+        <div id="loader" class="loading">
+            <div class="loader"></div>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Welcome!</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <input type="search" id="search-username" name="search-username" class="form-control mr-sm-2 my-2" placeholder="Search username" aria-label="Search username">
+                <select name="servers" id="servers" class="form-control mr-sm-2 my-2">
+                    <option value="eun1">Europe Nordic & east</option>
+                    <option value="euw1">Europe West</option>
+                    <option value="ru">Russia</option>
+                    <option value="kr">Korea</option>
+                    <option value="br1">Brazil</option>
+                    <option value="oc1">Oceania</option>
+                    <option value="jp1">Japan</option>
+                    <option value="na1">North America</option>
+                    <option value="tr1">Turkey</option>
+                    <option value="la1">LAN</option>
+                    <option value="la1">LAS</option>
+                </select>
+                <button class="btn btn-outline-success my-2 my-sm-0" id="findUser">Find user</button> 
+            </div>
+        </nav>
+        <!-- End Navigation -->
+
+        <!-- Summoner Info -->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <section id="user-info" class="media my-2 w-75">
+                    <img id="profilePic" class="rounded float-left img-fluid d-flex mr-3" width="150" height="150" alt=""/>              
+                    <div class="media-body">
+                        <div class="p-2">
+                            <h3 id="username" class="mt-0"></h3>
+                        </div>
+                        <div id="summoner-positions">
+                            <div class="d-flex flex-column">
+                                <div class="p-2">
+                                    <label for="division-solo" class="labels">Ranked Solo/Duo</label>
+                                    <b><span id="division-solo" name="division-solo" class="mt-0 mr-2"></span></b>
+                                    <span id="lp-solo" class="mt-0"></span>
+                                </div>
+                                <!-- <div class="p-2">
+                                    <label for="division-flex" class="labels">Ranked Flex</label>
+                                    <b><span id="division-flex" name="division-flex" class="mt-0 mr-2"></span></b>
+                                    <span id="lp-flex"></span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div> 
+                </section>
+            </div>    
+        </div>
+        <!-- End Summoner Info -->
+        
+        <!-- Summoner Matches -->
+        <div class="container-fluid">
+            <section id="search-matches">
+                    <div class="d-inline-flex justify-content-center w-100">
+                        <input type="number" id="search-recent-match" name="search-recent-match" class="form-control mr-sm-2 w-25" placeholder="Search recent match" min="1" max="20">
+                        <button type="button" class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" id="findMatch">Find match</button>
+                        <button type="button" class="btn btn-outline-default my-2 my-sm-0 mr-sm-2" id="listView">List view</button>
+                        <button type="button" class="btn btn-outline-default my-2 my-sm-0 mr-sm-2" id="gridView">Grid view</button>
+                    </div>
+                </section>
+            <div class="row justify-content-center">
+                <section id="summoner-matches" class="w-75">
+                    <div id="grid" class="">
+                    </div>
+                </section>
+            </div>
+
+        </div>
+        <!-- End Summoner Matches -->
+
+    <!-- SCRIPTS  -->
+    <script src="public/scripts/jquery-3.2.1.min.js"></script>
+    <script src="public/scripts/bootstrap.bundle.min.js"></script>
+    <script src="public/scripts/bootstrap.js"></script>
+    <script src="public/scripts/custom.js"></script>
+    <!-- END SCRIPTS -->
+    </body>
+</html>
