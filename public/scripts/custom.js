@@ -10,7 +10,6 @@ var staticVersion = '10.3.1'; // Change to the current one;
 
 $(document).ready(function() {
     var api = new API();
-	debugger;
     $('#loader').hide();
     $('#search-recent-match').hide();
     $('#search-matches').hide();
@@ -68,7 +67,6 @@ function API() {
     var champions = {};
 
     this.getUserByUsername = function() {
-		debugger;
         var apiURL = 'summoner/v4/summoners/by-name/';
         var data = {};
         data['search-username'] = $('#search-username').val();
