@@ -184,7 +184,7 @@ function API() {
 
         content = '<div id="recentMatch'+ recentMatchField +'" class="d-inline-flex justify-content-center w-100 my-2 mr-sm-2">'
         $.each(self.recentMatch.teams, function(i, match) {
-            var bgColor = match.win == 'Win' ? '#a3cfec' : '#e2b6b3'; 
+            var bgColor = match.win == 'Win' ? '#a3cfec' : '#e2b6b3';
             content += '<div class="col rounded-right" style="background-color: '+ bgColor +'">';
 
             $.each(self.recentMatch.participants, function(p, summoner) {
@@ -225,7 +225,7 @@ function API() {
     this.format = function(string, params) {
         $.each(params, function (i, n) {
             string = string.replace(new RegExp("\\{" + i + "\\}", "g"), n);
-        })
+        });
         return string;
     }
 }
