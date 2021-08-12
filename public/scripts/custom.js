@@ -218,7 +218,7 @@ function API() {
                 url = url.concat(element + '/');
             }
         }
-		console.log(url.slice(0, -1).concat(querySeparator + 'api_key=' + apiKey));
+
         return url.slice(0, -1).concat(querySeparator + 'api_key=' + apiKey);
     }
 
