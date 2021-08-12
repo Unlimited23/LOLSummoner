@@ -1,6 +1,6 @@
 const protocol = 'https://'
 const domain = '.api.riotgames.com/lol/';
-const apiKey = 'RGAPI-8fad9e38-ed05-4c30-9500-4c9a00b43c3d';
+let apiKey = '';
 var userAjax = {};
 var recentAjax = {};
 var counter = 0;
@@ -73,11 +73,14 @@ function API() {
     var champions = {};
 
     this.getUserByUsername = function() {
+		apiKey = $('#api-key').val();
         var apiURL = 'summoner/v4/summoners/by-name/';
         var data = {};
         data['search-username'] = $('#search-username').val();
         var url = self.buildURL(apiURL, data);
-    
+
+		$('#loader').hide();
+
         userAjax = $.ajax({
             url: url,
             type: 'GET',
@@ -98,7 +101,7 @@ function API() {
     }
 
     this.getUserPositions = function() {
-        var apiURL = 'league/v4/entries/by-summoner/{0}/'
+        var apiURL = 'league/v4/entries/by-summoner/{0}/';
         var url = self.buildURL(self.format(apiURL, [self.user.id]));
 
         $.get(url, {}, function(resp) {
@@ -215,6 +218,7 @@ function API() {
                 url = url.concat(element + '/');
             }
         }
+		console.log(url.slice(0, -1).concat(querySeparator + 'api_key=' + apiKey));
         return url.slice(0, -1).concat(querySeparator + 'api_key=' + apiKey);
     }
 
